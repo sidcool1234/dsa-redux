@@ -1,15 +1,17 @@
 package org.sid.misc;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class Miscellaneous {
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        System.out.println(Base64.getEncoder().encodeToString(sha256("a")));
+
     }
 
-    static byte[] sha256(String input) throws NoSuchAlgorithmException {
+    static byte[] sha256(@NotNull String input) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         return md.digest(input.getBytes());
     }
