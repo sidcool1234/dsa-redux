@@ -64,6 +64,26 @@
     "settings.editor.selected.configurable": "Debugger_Data_Views_Java"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Miscellaneous" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.sid.misc.Miscellaneous" />
+      <module name="dsa-redux.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.sid.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Miscellaneous" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
