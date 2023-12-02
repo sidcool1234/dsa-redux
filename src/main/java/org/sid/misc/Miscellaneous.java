@@ -1,7 +1,6 @@
 package org.sid.misc;
 
 import org.jetbrains.annotations.NotNull;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
