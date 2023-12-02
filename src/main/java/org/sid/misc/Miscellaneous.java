@@ -1,20 +1,56 @@
 package org.sid.misc;
 
 import org.jetbrains.annotations.NotNull;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Miscellaneous {
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        CollectionsMisc.collections();
+    public static void main(String[] args) throws Exception {
+        justDoSomethingWithCode();
     }
 
     static byte[] sha256(@NotNull String input) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         return md.digest(input.getBytes());
+    }
+
+    static void justDoSomethingWithCode() throws InterruptedException {
+        var list = new ArrayList<Thread>();
+        for (int i = 0; i < 5; i++) {
+            list.add(getThread());
+        }
+
+        list.forEach(Thread::start);
+        Thread.sleep(150);
+        System.out.println("Joining Threads");
+        list.forEach(t -> {
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        System.out.println("Main Thread ended");
+    }
+
+    @NotNull
+    private static Thread getThread() {
+        return new Thread() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep((long) (12 * Math.random() * 100));
+                    System.out.println("Thread finished " + Thread.currentThread().getName());
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
     }
 }
 
