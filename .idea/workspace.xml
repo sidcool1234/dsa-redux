@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="361bccbb-26bd-4f5c-abe7-006630986af1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/sid/misc/Miscellaneous.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sid/misc/Miscellaneous.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sid/neetcode/ContainsDuplicate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sid/neetcode/ContainsDuplicate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
