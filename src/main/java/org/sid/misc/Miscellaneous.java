@@ -8,11 +8,36 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Miscellaneous {
     public static void main(String[] args) throws Exception {
-        justDoSomethingWithCode();
+        testAtomicInteger();
     }
+
+    private static final AtomicInteger atomicInt = new AtomicInteger(0);
+    private static Thread getThreadForAtomic() throws InterruptedException {
+        return new Thread(() -> {
+            try {
+                Thread.sleep(2);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            atomicInt.incrementAndGet();
+        });
+    }
+
+    static void testAtomicInteger() throws InterruptedException {
+        var list = new ArrayList<Thread>();
+        for (int i = 0; i < 50; i++) {
+            list.add(getThreadForAtomic());
+        }
+        list.forEach(Thread::start);
+        joinThreads(list);
+        System.out.println(atomicInt.intValue());
+        System.out.println("Main Thread End");
+    }
+
 
     static byte[] sha256(@NotNull String input) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -28,6 +53,11 @@ public class Miscellaneous {
         list.forEach(Thread::start);
         Thread.sleep(150);
         System.out.println("Joining Threads");
+        joinThreads(list);
+        System.out.println("Main Thread ended");
+    }
+
+    private static void joinThreads(ArrayList<Thread> list) {
         list.forEach(t -> {
             try {
                 t.join();
@@ -35,22 +65,18 @@ public class Miscellaneous {
                 throw new RuntimeException(e);
             }
         });
-        System.out.println("Main Thread ended");
     }
 
-    @NotNull
+
     private static Thread getThread() {
-        return new Thread() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep((long) (12 * Math.random() * 100));
-                    System.out.println("Thread finished " + Thread.currentThread().getName());
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+        return new Thread(() -> {
+            try {
+                Thread.sleep((long) (12 * Math.random() * 100));
+                System.out.println("Thread finished " + Thread.currentThread().getName());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
-        };
+        });
     }
 }
 
