@@ -19,7 +19,7 @@ public class GroupedAnagrams {
             if (isChecked[i]) continue;
             list.add(strs[i]);
             for (int j = i + 1; j < strs.length; j++) {
-                if (isAnagram(strs[i], strs[j])) {
+                if (ValidAnagram.isAnagramOptimised(strs[i], strs[j])) {
                     isChecked[j] = true;
                     list.add(strs[j]);
                 }
@@ -28,17 +28,5 @@ public class GroupedAnagrams {
         }
 
         return groupedList;
-    }
-
-    public static boolean isAnagram(String s, String t) {
-        if (s == null || t == null || s.length() != t.length()) return false;
-
-        var sChar = s.toCharArray();
-        var tChar = t.toCharArray();
-
-        Arrays.sort(sChar);
-        Arrays.sort(tChar);
-
-        return String.valueOf(sChar).equals(String.valueOf(tChar));
     }
 }
