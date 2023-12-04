@@ -1,11 +1,32 @@
 package org.sid.neetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class GroupedAnagrams {
-    public List<List<String>> groupAnagrams(String[] strs) {
+
+    // O(n * m log m) -> n is the size of array, m is the average length of individual string
+    public List<List<String>> groupAnagramsOptimized(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            throw new IllegalArgumentException("Invalid input array, either null or empty");
+        }
+
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String str : strs) {
+            char[] strChars = str.toCharArray();
+            Arrays.sort(strChars);
+            String sortedStr = String.valueOf(strChars);
+            if (!map.containsKey(sortedStr)) {
+                map.put(sortedStr, new ArrayList<>());
+            }
+
+            map.get(sortedStr).add(str);
+        }
+        return new ArrayList<>(map.values());
+    }
+
+    // O(n^2 * k) -> n is the size of array, k is the average size of string (Timelimit exceeded in LC)
+    public List<List<String>> groupAnagramsBruteForce(String[] strs) {
 
         if (strs == null || strs.length == 0) {
             throw new IllegalArgumentException("Invalid input array, either null or empty");
