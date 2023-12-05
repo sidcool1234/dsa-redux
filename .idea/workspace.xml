@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="361bccbb-26bd-4f5c-abe7-006630986af1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/sid/neetcode/GroupedAnagrams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sid/neetcode/GroupedAnagrams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
