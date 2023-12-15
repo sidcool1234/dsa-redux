@@ -4,16 +4,41 @@ import org.jetbrains.annotations.NotNull;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Miscellaneous {
     public static void main(String[] args) throws Exception {
         testAtomicInteger();
     }
+
+    // A pangram is a sentence where every letter of the English alphabet appears at least once.
+    public static boolean checkIfPangram(String sentence) {
+        System.out.println(sentence);
+        var arr = new int[26];
+        var charArray = sentence.toLowerCase().toCharArray();
+        for(char c : charArray){
+            if(c - 'a' < 0 || c - 'a' > 26) continue;
+            arr[c - 'a'] = 1;
+        }
+
+        for(int i : arr){
+            if(i == 0) return false;
+        }
+
+        return true;
+    }
+
+
+    public static boolean containsDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for(int num : nums){
+            if(set.contains(num)) return true;
+            set.add(num);
+        }
+        return false;
+    }
+
 
     private static final AtomicInteger atomicInt = new AtomicInteger(0);
     private static Thread getThreadForAtomic() throws InterruptedException {
