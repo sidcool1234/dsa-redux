@@ -2,6 +2,8 @@ package org.sid.neetcode;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class LongestCommonSubsequence {
 
@@ -34,6 +36,31 @@ public class LongestCommonSubsequence {
 
         return Math.max(finalCount, count);
 
+    }
+
+    // https://www.youtube.com/watch?v=P6RZZMu_maU
+    public int longestConsecutiveHashing(int[] nums) {
+        if (nums == null)
+            throw new IllegalArgumentException("Null input array");
+
+        if (nums.length <= 1)
+            return nums.length;
+
+        Set<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+
+
+        int finalCount = 1;
+        for (Integer num : set) {
+            if (!set.contains(num - 1)) {
+                int count = 1;
+                while (set.contains(num + count)) {
+                    count++;
+                }
+                finalCount = Math.max(count, finalCount);
+            }
+        }
+
+        return finalCount;
     }
 
     /**
